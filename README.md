@@ -18,10 +18,10 @@ Globally:
 npm install --global package-strip-deps
 ```
 
-Or as a dev depencies (e.g. you need it as part of your build project)
+Or as a dev depencies (e.g. you need it as part of your build process)
 
 ```bash
-npm isntall --save-dev package-strip-deps
+npm install --save-dev package-strip-deps
 ```
 
 
