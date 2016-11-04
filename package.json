@@ -1,0 +1,51 @@
+{
+  "name": "package-strip-deps",
+  "version": "1.0.0",
+  "description": "A little command line utility that allows to strip dependencies from a NPM package.json file",
+  "main": "index.js",
+  "bin": {
+    "package-strip-deps": "index.js"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "lint": "eslint index.js test.js",
+    "test": "npm run lint && tap test.js --coverage | tap-spec",
+    "posttest": "tap --coverage-report=lcov && codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmammino/package-strip-deps.git"
+  },
+  "author": {
+    "name": "Luciano Mammino",
+    "email": "lucianomammino@gmail.com",
+    "url": "http://loige.co"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lmammino/package-strip-deps/issues"
+  },
+  "homepage": "https://github.com/lmammino/package-strip-deps#readme",
+  "devDependencies": {
+    "codecov": "^1.0.1",
+    "eslint": "^3.9.1",
+    "eslint-config-xo-space": "^0.15.0",
+    "tap": "^8.0.0",
+    "tap-spec": "^4.1.1"
+  },
+  "eslintConfig": {
+    "extends": "xo-space"
+  },
+  "keywords": [
+    "package",
+    "dependencies",
+    "node",
+    "npm",
+    "strip",
+    "package strip dependencies",
+    "strip dependencies from package.json",
+    "package.json"
+  ]
+}
