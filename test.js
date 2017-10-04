@@ -1,11 +1,11 @@
 'use strict'
 
-var childProcess = require('child_process')
-var path = require('path')
-var test = require('tap').test
+const childProcess = require('child_process')
+const path = require('path')
+const test = require('tap').test
 
 test('it should strip "dependencies" and "devDependencies" from an input JSON', function (t) {
-  var input = JSON.stringify({
+  const input = JSON.stringify({
     foo: 'bar',
     baz: 'bat',
     bat: 'man',
@@ -19,7 +19,7 @@ test('it should strip "dependencies" and "devDependencies" from an input JSON', 
     }
   })
 
-  var expectedOutput = {
+  const expectedOutput = {
     foo: 'bar',
     baz: 'bat',
     bat: 'man',
@@ -27,16 +27,16 @@ test('it should strip "dependencies" and "devDependencies" from an input JSON', 
     devDependencies: {}
   }
 
-  var executable = path.join(__dirname, 'index.js')
-  var terminal = childProcess.spawn(executable)
+  const executable = path.join(__dirname, 'index.js')
+  const terminal = childProcess.spawn(executable)
 
-  var output = ''
+  let output = ''
   terminal.stdout.on('data', function (data) {
     output += data
   })
 
   terminal.on('exit', function (code) {
-    var parsedOutput = JSON.parse(output)
+    const parsedOutput = JSON.parse(output)
     t.equals(code, 0)
     t.same(parsedOutput, expectedOutput)
     t.end()
@@ -47,7 +47,7 @@ test('it should strip "dependencies" and "devDependencies" from an input JSON', 
 })
 
 test('it should keep packages when the "keep" option is used', function (t) {
-  var input = JSON.stringify({
+  const input = JSON.stringify({
     foo: 'bar',
     baz: 'bat',
     bat: 'man',
@@ -59,7 +59,7 @@ test('it should keep packages when the "keep" option is used', function (t) {
     }
   })
 
-  var expectedOutput = {
+  const expectedOutput = {
     foo: 'bar',
     baz: 'bat',
     bat: 'man',
@@ -69,16 +69,16 @@ test('it should keep packages when the "keep" option is used', function (t) {
     }
   }
 
-  var executable = path.join(__dirname, 'index.js')
-  var terminal = childProcess.spawn(executable, ['--keep', 'somedep2', '--keep', 'somedep3'])
+  const executable = path.join(__dirname, 'index.js')
+  const terminal = childProcess.spawn(executable, ['--keep', 'somedep2', '--keep', 'somedep3'])
 
-  var output = ''
+  let output = ''
   terminal.stdout.on('data', function (data) {
     output += data
   })
 
   terminal.on('exit', function (code) {
-    var parsedOutput = JSON.parse(output)
+    const parsedOutput = JSON.parse(output)
     t.equals(code, 0)
     t.same(parsedOutput, expectedOutput)
     t.end()
