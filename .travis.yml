@@ -1,26 +1,34 @@
 language: node_js
 node_js:
-  - "8"
-  - "7"
-  - "6"
-  - "5"
-  - "4"
-  - "0.12"
-  - "0.11"
-  - "0.10"
+- '8'
+- '7'
+- '6'
+- '5'
+- '4'
+- '0.12'
+- '0.11'
+- '0.10'
 env:
-  - CXX=g++-4.8
+- CXX=g++-4.8
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+    - g++-4.8
 script:
-  - npm test
+- npm test
 install:
-  - npm install --dev
+- npm install --dev
 before_install:
-  - "npm update -g npm"
+- npm update -g npm
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: npm
+  email: lucianomammino@gmail.com
+  api_key:
+    secure: QVLp2pktYIo0UWA78/sQx7Dsa33fvHmFrbq/Fxbrlmnvasxluiu5bOK30GbbtF1hAkZS+uLIeRShzVcz20eX5FEUhkRg91ydCHyIUC5t4Ax4R9K7GF3bSTFTb5O5F58l2+lQ98BPQnFeq79TkMXK5g8I+I9RpxHhM5AF8S6y623Wc5z+NW56ibFCTlJzvPVQqe5jS1AnE2pN3ekW1R1LJHRmq9HwXGL8Ij0a7V7P1caW8it5bPoMDs69p8Ap7/iL4DP5VKi/MImucbUAQkgN+1n4tJysYqQ3SNy/GNQK9hynmxlbb2LFGKdgydpCVeiWKkUd2usAnr4TpFc8exp5mtCM76Soi9g+rZoYOPjYxFpwbV+uywCwXleTNy4vX+lUlui6wF57Bm4pS+2BPzxGp6Xq+WMEHyAg2EOROAlTXOpesGkWUuwj797mVaql51hQpzEcVLt96jMB7YZhYLPjjmQCEmC7JEB77hvUvuwdB9vZoHu2E53LhYPUrVU3FLlPOUzMRmNllFf11cQyi9eWCgHCPSX42Gc5yZfyQrUyDnXsEmkDGgc7uzdQoh8ZeXQthyOY9T1emUe2J101l8DgXoY1fhcm7jhSi1EaxOqLtQXe1HrTvOaPKSDmmscq9wOwwmOKYjAXWHFlUNiFjj3PLwroX5YvVQXKoXy4wTEK5/A=
+  on:
+    repo: lmammino/package-strip-deps
+    branch: master
